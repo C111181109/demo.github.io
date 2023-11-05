@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>遊戲選項</title>
+    <style>
+        /* Styles you provided remain the same */
+        /* ... */
+    </style>
+</head>
+<body>
+
+<h1>遊戲選項</h1>
+
+<div class="grid-container">
+    <div class="arrow left" onclick="prevItem()">&#9664;</div>
+    <div class="grid-item"><a href="page1.html"><img src="空洞騎士.JPG" alt="選項一"></a></div>
+    <div class="grid-item"><a href="page2.html"><img src="終結者莉莉.jpg" alt="選項二"></a></div>
+    <div class="grid-item"><a href="page3.html"><img src="死亡細胞.JPG" alt="選項三"></a></div>
+    <div class="grid-item"><a href="page4.html"><img src="ORI.JPG" alt="選項四"></a></div>
+    <div class="arrow right" onclick="nextItem()">&#9654;</div>
+</div>
+<script>
+   let items = document.querySelectorAll('.grid-item');
+   let index = 0;
+   function cycleItems() {
+       items.forEach((item, i) => {
+           let newIndex = (i + 1)  % items.length;
+           item.style.transform = `translateX(${newIndex * 100}%)`;
+       });
+   }
+   function cycleItems() {
+       items.forEach((item, i) => {
+           let newIndex = ((i - 1) - index + items.length) % items.length;
+           item.style.transform = `translateX(${newIndex * 100}%)`;
+       });
+   }
+
+   function nextItem() {
+       index = (index + 1) % items.length;
+       cycleItems();
+   }
+
+   function prevItem() {
+       index = (index - 1 + items.length) % items.length;
+       cycleItems();
+   }
+</script>
+
+
+</body>
+</html>
+
+

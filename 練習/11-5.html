@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>遊戲選項</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden; /* 隐藏溢出内容 */
+            position: relative;
+        }
+
+        .grid-item {
+            flex: 1;
+            text-align: center;
+            margin: 5px;
+            transition: transform 0.5s; /* 添加过渡效果 */
+        }
+
+        .grid-item a {
+            display: block;
+        }
+
+        /* Styling for arrows */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 24px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 50%;
+            color: #555;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .arrow:hover {
+            background: rgba(0, 0, 0, 0.2);
+            color: #333;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>遊戲選項</h1>
+
+<div class="grid-container">
+    <div class="arrow left" onclick="prevItem()">&#9664;</div>
+    <div class="grid-item"><a href="空洞騎士.html"><img src="空洞騎士.JPG" alt="選項一"></a></div>
+    <div class="grid-item"><a href="終結者莉莉.html"><img src="終結者莉莉.jpg" alt="選項二"></a></div>
+    <div class="grid-item"><a href="死亡細胞.html"><img src="死亡細胞.JPG" alt="選項三"></a></div>
+    <div class="grid-item"><a href="ori.html"><img src="ori (2).JPG" alt="選項四"></a></div>
+    <div class="grid-item"><a href="page5.html"><img src="空洞騎士.JPG" alt="選項五"></a></div>
+    <div class="arrow right" onclick="nextItem()">&#9654;</div>
+</div>
+
+<script>
+    let items = document.querySelectorAll('.grid-item');
+    let index = 0;
+
+    function cycleItems() {
+        items.forEach((item, i) => {
+            let newIndex = ((i - 1) - index + items.length) % items.length;
+            item.style.transform = `translateX(${newIndex * 100}%)`;
+        });
+    }
+
+    function nextItem() {
+        index = (index + 1) % items.length;
+        cycleItems();
+    }
+
+    function prevItem() {
+        index = (index - 1 + items.length) % items.length;
+        cycleItems();
+    }
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
